@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Department</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+        }
+
+        .header {
+            background: #123b63;
+            color: white;
+            padding: 25px 40px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 30px;
+        }
+
+        .header p {
+            margin-top: 10px;
+        }
+
+        .container {
+            width: 550px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        label {
+            display: block;
+            margin-top: 18px;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        button {
+            margin-top: 25px;
+            background: #1976b9;
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .cancel {
+            margin-left: 15px;
+            color: #1976b9;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>Add Department</h1>
+    <p>University Academic Management System</p>
+</div>
+
+<div class="container">
+
+    <form method="POST">
+
+        <label>Department ID</label>
+        <input
+            type="number"
+            name="dept_id"
+            placeholder="Example: 104"
+            required
+        >
+
+        <label>Department Name</label>
+        <input
+            type="text"
+            name="dept_name"
+            placeholder="Example: Artificial Intelligence"
+            required
+        >
+
+        <label>College</label>
+
+        <select name="college_id" required>
+
+            <option value="">Select College</option>
+
+            {% for college in colleges %}
+                <option value="{{ college[0] }}">
+                    {{ college[1] }}
+                </option>
+            {% endfor %}
+
+        </select>
+
+        <button type="submit">
+            Add Department
+        </button>
+
+        <a href="/departments" class="cancel">
+            Cancel
+        </a>
+
+    </form>
+
+</div>
+
+</body>
+</html>

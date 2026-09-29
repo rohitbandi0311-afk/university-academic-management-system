@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Enrollment - University Academic Management System</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+        }
+
+        .header {
+            background: #123b64;
+            color: white;
+            padding: 25px 40px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 30px;
+        }
+
+        .header p {
+            margin-top: 10px;
+        }
+
+        .container {
+            width: 550px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            margin-top: 18px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 7px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        button {
+            margin-top: 25px;
+            padding: 12px 22px;
+            background: #1976c3;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .cancel {
+            margin-left: 15px;
+            color: #1976c3;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>Add Enrollment</h1>
+    <p>University Academic Management System</p>
+</div>
+
+<div class="container">
+
+    <h2>Enrollment Details</h2>
+
+    <form method="POST">
+
+        <label>Enrollment ID</label>
+        <input type="text"
+               name="enrollment_id"
+               placeholder="Example: E004"
+               required>
+
+        <label>Student</label>
+
+        <select name="student_id" required>
+
+            <option value="">Select Student</option>
+
+            {% for student in students %}
+
+            <option value="{{ student[0] }}">
+                {{ student[0] }} - {{ student[1] }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+        <label>Course</label>
+
+        <select name="course_id" required>
+
+            <option value="">Select Course</option>
+
+            {% for course in courses %}
+
+            <option value="{{ course[0] }}">
+                {{ course[0] }} - {{ course[1] }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+        <label>Semester</label>
+        <input type="number"
+               name="semester"
+               min="1"
+               max="10"
+               placeholder="Example: 3"
+               required>
+
+        <label>Grade</label>
+        <input type="text"
+               name="grade"
+               maxlength="5"
+               placeholder="Example: A">
+
+        <button type="submit">
+            Add Enrollment
+        </button>
+
+        <a class="cancel" href="/enrollments">
+            Cancel
+        </a>
+
+    </form>
+
+</div>
+
+</body>
+</html>

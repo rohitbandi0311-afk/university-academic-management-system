@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Course - University Academic Management System</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+        }
+
+        .header {
+            background: #123b64;
+            color: white;
+            padding: 25px 40px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 30px;
+        }
+
+        .header p {
+            margin-top: 10px;
+        }
+
+        .container {
+            width: 550px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            margin-top: 18px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 7px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        button {
+            margin-top: 25px;
+            padding: 12px 22px;
+            background: #1976c3;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .cancel {
+            margin-left: 15px;
+            color: #1976c3;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>Add Course</h1>
+    <p>University Academic Management System</p>
+</div>
+
+<div class="container">
+
+    <h2>Course Details</h2>
+
+    <form method="POST">
+
+        <label>Course ID</label>
+        <input type="text"
+               name="course_id"
+               placeholder="Example: CS201"
+               required>
+
+        <label>Course Title</label>
+        <input type="text"
+               name="title"
+               placeholder="Enter course title"
+               required>
+
+        <label>Department</label>
+
+        <select name="dept_id" required>
+
+            <option value="">Select Department</option>
+
+            {% for department in departments %}
+
+            <option value="{{ department[0] }}">
+                {{ department[1] }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+        <label>Credits</label>
+        <input type="number"
+               name="credits"
+               min="1"
+               max="10"
+               placeholder="Example: 4"
+               required>
+
+        <button type="submit">
+            Add Course
+        </button>
+
+        <a class="cancel" href="/courses">
+            Cancel
+        </a>
+
+    </form>
+
+</div>
+
+</body>
+</html>

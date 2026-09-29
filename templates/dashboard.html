@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>University Academic Management System</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+        }
+
+        .header {
+            background: #12355b;
+            color: white;
+            padding: 25px 40px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        .header p {
+            margin: 8px 0 0;
+            opacity: 0.85;
+        }
+
+        .container {
+            padding: 35px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .card h2 {
+            margin: 0;
+            color: #12355b;
+        }
+
+        .number {
+            font-size: 36px;
+            font-weight: bold;
+            margin-top: 12px;
+        }
+
+        .modules {
+            margin-top: 35px;
+        }
+
+        .modules a {
+            display: inline-block;
+            background: #1769aa;
+            color: white;
+            padding: 13px 20px;
+            margin: 7px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        .modules a:hover {
+            background: #0d4775;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>University Academic Management System</h1>
+    <p>DBMS Capstone Project | Flask + MySQL</p>
+</div>
+
+<div class="container">
+
+    <h2>Dashboard</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h2>🏫 Colleges</h2>
+            <div class="number">{{ counts['college'] }}</div>
+        </div>
+
+        <div class="card">
+            <h2>🏢 Departments</h2>
+            <div class="number">{{ counts['department'] }}</div>
+        </div>
+
+        <div class="card">
+            <h2>👨‍🎓 Students</h2>
+            <div class="number">{{ counts['student'] }}</div>
+        </div>
+
+        <div class="card">
+            <h2>👨‍🏫 Faculty</h2>
+            <div class="number">{{ counts['faculty'] }}</div>
+        </div>
+
+        <div class="card">
+            <h2>📚 Courses</h2>
+            <div class="number">{{ counts['course'] }}</div>
+        </div>
+
+        <div class="card">
+            <h2>📝 Enrollments</h2>
+            <div class="number">{{ counts['enrollment'] }}</div>
+        </div>
+
+    </div>
+
+    <div class="modules">
+
+        <h2>System Modules</h2>
+
+        <a href="/students">Students</a>
+        <a href="/departments">Departments</a>
+        <a href="/faculty">Faculty</a>
+        <a href="/courses">Courses</a>
+        <a href="/enrollments">Enrollments</a>
+        <a href="/reports">Reports</a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

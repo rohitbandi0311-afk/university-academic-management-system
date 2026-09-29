@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reports - University Academic Management System</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+        }
+
+        .header {
+            background: #12355b;
+            color: white;
+            padding: 25px 40px;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .header p {
+            margin-bottom: 0;
+        }
+
+        .container {
+            padding: 35px 40px;
+        }
+
+        .report-card {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .report-card h2 {
+            color: #12355b;
+            margin-top: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th {
+            background: #12355b;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 11px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #1769aa;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 10px;
+            color: #1769aa;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>Reports & SQL Queries</h1>
+    <p>University Academic Management System</p>
+</div>
+
+<div class="container">
+
+    <!-- Report 1 -->
+    <div class="report-card">
+        <h2>1. Total Students</h2>
+
+        <div class="number">
+            {{ total_students }}
+        </div>
+
+        <p>
+            Uses the SQL COUNT() aggregate function.
+        </p>
+    </div>
+
+
+    <!-- Report 2 -->
+    <div class="report-card">
+
+        <h2>2. Students with Departments</h2>
+
+        <p>
+            Demonstrates INNER JOIN between Student and Department.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>Student ID</th>
+                <th>Name</th>
+                <th>Department</th>
+            </tr>
+
+            {% for row in student_departments %}
+
+            <tr>
+                <td>{{ row.student_id }}</td>
+                <td>{{ row.name }}</td>
+                <td>{{ row.dept_name }}</td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+
+    <!-- Report 3 -->
+    <div class="report-card">
+
+        <h2>3. Students by Department</h2>
+
+        <p>
+            Demonstrates GROUP BY and COUNT().
+        </p>
+
+        <table>
+
+            <tr>
+                <th>Department</th>
+                <th>Number of Students</th>
+            </tr>
+
+            {% for row in department_counts %}
+
+            <tr>
+                <td>{{ row.dept_name }}</td>
+                <td>{{ row.student_count }}</td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+
+    <!-- Report 4 -->
+    <div class="report-card">
+
+        <h2>4. Course Details</h2>
+
+        <p>
+            Displays courses along with their department and faculty.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>Course ID</th>
+                <th>Course Name</th>
+                <th>Department</th>
+                <th>Faculty</th>
+            </tr>
+
+            {% for row in courses %}
+
+            <tr>
+                <td>{{ row.course_id }}</td>
+                <td>{{ row.title }}</td>
+                <td>{{ row.dept_name }}</td>
+                <td>{{ row.faculty_name }}</td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+
+    <a class="back" href="/">
+        ← Back to Dashboard
+    </a>
+
+</div>
+
+</body>
+</html>

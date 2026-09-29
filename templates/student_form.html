@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Student</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+        }
+
+        .header {
+            background: #12355b;
+            color: white;
+            padding: 22px 40px;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .container {
+            width: 600px;
+            margin: 40px auto;
+        }
+
+        .form-box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 11px;
+            margin-top: 6px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            margin-top: 22px;
+            background: #1769aa;
+            color: white;
+            padding: 12px 22px;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .back {
+            display: inline-block;
+            margin-left: 10px;
+            color: #1769aa;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>Add Student</h1>
+    <p>University Academic Management System</p>
+</div>
+
+<div class="container">
+
+    <div class="form-box">
+
+        <form method="POST">
+
+            <label>Student ID</label>
+            <input
+                type="text"
+                name="student_id"
+                placeholder="Example: 25B11DS500"
+                required
+            >
+
+            <label>Student Name</label>
+            <input
+                type="text"
+                name="name"
+                placeholder="Enter student name"
+                required
+            >
+
+            <label>Gender</label>
+            <select name="gender" required>
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+
+            <label>Date of Birth</label>
+            <input
+                type="date"
+                name="dob"
+                required
+            >
+
+            <label>Email</label>
+            <input
+                type="email"
+                name="email"
+                placeholder="student@aditya.edu.in"
+                required
+            >
+
+            <label>Department</label>
+            <select name="dept_id" required>
+
+                <option value="">Select Department</option>
+
+                {% for department in departments %}
+
+                <option value="{{ department.dept_id }}">
+                    {{ department.dept_id }} - {{ department.dept_name }}
+                </option>
+
+                {% endfor %}
+
+            </select>
+
+            <button type="submit" class="btn">
+                Add Student
+            </button>
+
+            <a href="/students" class="back">
+                Cancel
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

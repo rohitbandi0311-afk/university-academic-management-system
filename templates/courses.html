@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Course Management</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+        }
+
+        .header {
+            background: #123b63;
+            color: white;
+            padding: 25px 40px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 30px;
+        }
+
+        .header p {
+            margin-top: 10px;
+        }
+
+        .container {
+            padding: 40px;
+        }
+
+        .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn {
+            background: #1976b9;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 35px;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        th {
+            background: #123b63;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .edit {
+            background: #f5a623;
+            color: white;
+            padding: 8px 14px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .delete {
+            background: #e05252;
+            color: white;
+            padding: 8px 14px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 25px;
+            color: #1976b9;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>Course Management</h1>
+    <p>University Academic Management System</p>
+</div>
+
+<div class="container">
+
+    <div class="top">
+        <h2>Course Records</h2>
+
+        <a href="/courses/add" class="btn">
+            + Add Course
+        </a>
+    </div>
+
+    <table>
+
+        <tr>
+            <th>Course ID</th>
+            <th>Course Title</th>
+            <th>Department</th>
+            <th>Credits</th>
+            <th>Actions</th>
+        </tr>
+
+        {% for course in courses %}
+
+        <tr>
+
+            <td>{{ course[0] }}</td>
+
+            <td>{{ course[1] }}</td>
+
+            <td>{{ course[3] }}</td>
+
+            <td>{{ course[4] }}</td>
+
+            <td>
+                <a class="edit"
+                   href="/courses/edit/{{ course[0] }}">
+                    Edit
+                </a>
+
+                <a class="delete"
+                   href="/courses/delete/{{ course[0] }}"
+                   onclick="return confirm('Delete this course?');">
+                    Delete
+                </a>
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    <a class="back" href="/">
+        ← Back to Dashboard
+    </a>
+
+</div>
+
+</body>
+</html>
